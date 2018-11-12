@@ -15,10 +15,10 @@ class StringTest {
         String modifiedString = originalString.replace("original", "new");
 
         // TODO: Please modify the following line to pass the test.
-        //
+        //modifiedString is not equal to originakString
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final Optional<Boolean> areSame = Optional.empty();
+        final Optional<Boolean> areSame = Optional.of(false);
         // --end-->
 
         assertEquals("The new string", modifiedString);
@@ -32,10 +32,10 @@ class StringTest {
         String modifiedString = originalString.trim();
 
         // TODO: Please modify the following line to pass the test.
-        //
+        //space are deleted in modifiedString
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final Optional<Boolean> areSame = Optional.empty();
+        final Optional<Boolean> areSame = Optional.of(false);
         // --end-->
 
         assertEquals("The string with tailing space.", modifiedString);
@@ -50,10 +50,10 @@ class StringTest {
         originalString += "Part two.";
 
         // TODO: Please modify the following line to pass the test.
-        //
+        //originalString has been modified.
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final Optional<Boolean> areSame = Optional.empty();
+        final Optional<Boolean> areSame = Optional.of(false);
         // --end-->
 
         assertEquals("Part one. Part two.", originalString);
@@ -67,7 +67,7 @@ class StringTest {
 
         // TODO: Take part of the original string according to expectation.
         // <--start
-        final String partOfString = null;
+        final String partOfString = originalString.substring(5,originalString.length());
         // --end-->
 
         final String expectedString = "is great";
@@ -82,7 +82,7 @@ class StringTest {
 
         // TODO: Take part of the original string according to expectation.
         // <--start
-        final String partOfString = null;
+        final String partOfString = originalString.substring(5,7);
         // --end-->
 
         final String expectedString = "is";
@@ -94,8 +94,11 @@ class StringTest {
      * Questions on take string apart.
      *
      * - What if the input arguments is out of range of the string?
+     * return nothing
      * - What will happen if the the starting index is greater than the ending index?
+     * return nothing
      * - What will happen if the input string is of null reference?
+     * NullPointerException
      */
 
     @SuppressWarnings({"unused", "ConstantConditions"})
@@ -105,7 +108,7 @@ class StringTest {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = null;
+        String[] words = sentence.split(" ");
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -118,7 +121,7 @@ class StringTest {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = null;
+        String[] words = sentence.split("/");
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -133,6 +136,9 @@ class StringTest {
         // TODO: Create string using StringBuilder
         // <--Start
         StringBuilder builder = new StringBuilder();
+        builder.append("|---|\n" +
+                "|   |\n" +
+                "|---|\n");
         // --End-->
 
         final String expected =
@@ -152,7 +158,9 @@ class StringTest {
         // TODO: Write some code to calculate the checksum of the string. The checksum is the sum of each string char.
         // <--Start
         // --End-->
-
+        for (int i=0; i<text.length();i++){
+            sum=sum+((int)text.charAt(i));
+        }
         assertEquals(3655, sum);
     }
 
@@ -166,7 +174,7 @@ class StringTest {
         // こ - U+3053
         // れ - U+308c
         // <--Start
-        final String actual = null;
+        final String actual = "\u306a" + "\u306b" + "\u3053" + "\u308c";
         // --End-->
 
         assertEquals(expected, actual);
@@ -179,7 +187,7 @@ class StringTest {
 
         // TODO: Modify the following code to create new string from original String
         // <--Start
-        final String reversed = null;
+        final String reversed = new StringBuffer(original).reverse().toString();
         // --End-->
 
         assertEquals("654321", reversed);
@@ -196,8 +204,8 @@ class StringTest {
 
         // TODO: Please change the value of the following 2 lines to pass the test.
         // <--start
-        Optional<Boolean> actualResultOfEqual = Optional.empty();
-        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.empty();
+        Optional<Boolean> actualResultOfEqual = Optional.of(false);
+        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.of(true);
         // --end-->
 
         assertEquals(equalResult, actualResultOfEqual);
@@ -213,7 +221,7 @@ class StringTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expectedText = null;
+        final String expectedText = "Hello, Harry. Next year, you will be 23.";
         // --end-->
 
         assertEquals(expectedText, text);
